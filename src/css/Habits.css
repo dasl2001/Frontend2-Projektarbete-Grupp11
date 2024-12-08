@@ -1,0 +1,36 @@
+.priority-box-low,
+.priority-box-mid,
+.priority-box-high {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 12px;
+  margin: 0 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.hide-prio {
+  display: none;
+}
+
+.priority-box-low {
+  border: 1px solid rgba(37, 146, 37, 0.5);
+}
+
+.priority-box-mid {
+  border: 1px solid rgba(230, 197, 0, 0.5);
+}
+.priority-box-high {
+  border: 1px solid rgba(243, 5, 5, 0.5);
+}
+
+.priority-box-low:has(:checked) {
+  background-color: rgba(37, 146, 37, 0.3);
+}
+.priority-box-mid:has(:checked) {
+  background-color: rgba(230, 197, 14, 0.3);
+}
+.priority-box-high:has(:checked) {
+  background-color: rgba(243, 5, 5, 0.3);
+}
