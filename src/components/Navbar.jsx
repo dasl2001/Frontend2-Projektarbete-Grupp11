@@ -15,6 +15,9 @@ function Navbar() {
       <div className="navbar-center">
         <ul className="nav-links">
           <li>
+            <Link to="/start">Start</Link>
+          </li>
+          <li>
             <Link to="/todo">Todo</Link>
           </li>
           <li>

@@ -1,4 +1,89 @@
+.todo-container,
+.todo-details {
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+  background: whitesmoke;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
+
+.task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.task-form input,
+.task-form textarea,
+.task-form select {
+  padding: 10px;
+  border: 1px solid white;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.task-form button {
+  padding: 10px;
+  background-color: lightgreen;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 8px;
+}
+
+.task-form button:hover {
+  background-color: darkgreen;
+}
+
+
+.task-list {
+  margin-top: 20px;
+}
+
+.task-item {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background: white;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.task-item h3 {
+  margin: 0;
+}
+
+.task-item a {
+  color: blue;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.task-item a:hover {
+  text-decoration: underline;
+}
+
+
+.todo-details button {
+  margin-right: 10px;
+  padding: 10px;
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.todo-details button:hover {
+  background-color: blue;
+}
+
+  
   
 
   
