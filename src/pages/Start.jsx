@@ -1,3 +1,6 @@
+/*
+Moduler och komponenter importeras
+*/
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -24,7 +27,7 @@ function Start({ tasks }) {
         </ul>
       )}
 
-      <Link to="/todo">Se alla ärenden</Link>
+      <Link to="/todo">Se alla aktiviteter</Link>
     </div>
   );
 }

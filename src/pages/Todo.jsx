@@ -1,8 +1,24 @@
+/*
+Moduler och komponenter importeras.
+*/
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../css/todo.css';
 
+/*
+Todo komponenten tar 2 parametrar som skickas in av en föräldrakomponent:
+1. En array med befintliga aktiviteter (task).
+2. En funktion för att uppdatera listan över aktiviteter (setTasks).
+Dessa gör att Todo kan interagera med den delade datan i applikationen.
+*/
 function Todo({ tasks, setTasks }) {
+/*
+useState är en hook som används för att hantera tillstånd i komponenten.
+title, description, date, category, minutes är inmatning för att skapa nya uppgifter.
+showCompleted är en boolean som styr om slutförda aktiviteten.
+filterCategories är en array som lagrar valda kategorier för filtrering.
+sortBy är en sträng som anger vilket kriterium som ska användas för att sortera aktiviteterna.
+*/
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [date, setDate] = useState('');
@@ -13,6 +29,15 @@ function Todo({ tasks, setTasks }) {
   const [filterCategories, setFilterCategories] = useState([]);
   const [sortBy, setSortBy] = useState('');
 
+/*
+Kontrollerar att alla fält är ifyllda.
+Om alla fält är ifyllda skapas ett nytt objekt newTask med:
+Ett unikt ID baserat på tidsstämpel (Date.now()).
+title, description, date, category, minutes är inmatning.
+completed sätts till false eftersom ativiteten är ännu inte slutförd.
+Lägger till aktiviteten i listan och uppdaterar tasks genom att kopiera befintliga aktiviteter och lägger till nya aktiviteten.
+Återställer formuläret, rensar alla fält efter att aktiviten har lagts till.
+*/
   function addTask() {
     if (title && description && date && category && minutes) {
       const newTask = {
@@ -34,6 +59,11 @@ function Todo({ tasks, setTasks }) {
     }
   }
 
+/*
+Hanterar filtrering efter kategori.
+Om kategorin redan är vald tas den bort från filterCategories.
+Annars läggs den till.
+*/
   function toggleCategoryFilter(selectedCategory) {
     if (filterCategories.includes(selectedCategory)) {
       setFilterCategories(filterCategories.filter((cat) => cat !== selectedCategory));
@@ -42,12 +72,24 @@ function Todo({ tasks, setTasks }) {
     }
   }
 
+/*
+Filtrerar aktiviteter baserat på showCompleted och filterCategories.
+Om showCompleted är false filtreras slutförda aktiviten bort.
+Om inga kategorier är valda visas alla aktiviteter. 
+Annars visas bara aktiviteten vars kategori finns i filterCategories.
+*/
   const filteredTasks = tasks
     .filter((task) => (showCompleted ? true : !task.completed))
     .filter((task) =>
       filterCategories.length === 0 ? true : filterCategories.includes(task.category)
     );
 
+/*
+Skapar en sorterad lista baserat på sortBy. 
+date sorterar efter deadline (stigande).
+minutes sorterar efter tidsuppskattning (stigande).
+status sorterar så att ofullständiga aktiviteter kommer först.
+*/
   const sortedTasks = [...filteredTasks].sort((a, b) => {
     if (sortBy === 'date') {
       return new Date(a.date) - new Date(b.date);
@@ -60,10 +102,21 @@ function Todo({ tasks, setTasks }) {
     }
   });
 
+/*
+<div className="todo-container">:
+Skapar ett formulär för att mata in nya aktiviteter.
+När man klickar på "Lägg till" anropas addTask.
+<div>
+<label>
+<input type="checkbox" checked={showCompleted}:
+Denna div används för att  filtrera och sortera aktiviteter dynamiskt.
+<div className="task-list">:
+Visar ativiteterna som matchar filtrerings- och sorteringskriterierna.
+*/
   return (
     <div className="todo-container">
       <h2>Lägg till aktivitet</h2>
-      <div className="task-form">
+      <div className="task-form"> 
         <input
           type="text"
           placeholder="Titel"
@@ -95,11 +148,8 @@ function Todo({ tasks, setTasks }) {
         />
         <button onClick={addTask}>Lägg till</button>
       </div>
-
-      
-
       <h2>Filtrera och sortera</h2>
-      <div>
+      <div> 
         <label>
           <input
             type="checkbox"
@@ -155,6 +205,9 @@ function Todo({ tasks, setTasks }) {
   );
 }
 
+/*
+Gör det möjligt att importera och använda komponenten i andra filer.
+*/
 export default Todo;
 
 
