@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../css/Habits.css";
 import PriorityComponent from "../components/PriorityComponent";
+import Habit from "../components/Habits";
 
 const HabitsPage = () => {
   const [title, setTitle] = useState("");
   const [repetition, setRepetition] = useState("");
   const [selectedPriority, setSelectedPriority] = useState("");
   const [habits, setHabits] = useState([]);
+  const [filteredPriority, setFilteredPriority] = useState("");
 
   const prioChange = (prio) => {
     setSelectedPriority(prio);
@@ -55,6 +57,12 @@ const HabitsPage = () => {
     setHabits((habits) => habits.filter((_, i) => i !== index));
   };
 
+  const filteredHabits = filteredPriority
+    ? habits.filter((habit) => {
+        return habit.selectedPriority === filteredPriority;
+      })
+    : habits;
+
   return (
     <>
       <h2 className="header">Add a new habit</h2>
@@ -68,7 +76,7 @@ const HabitsPage = () => {
         ></input>
         <input
           className="input-repetition"
-          type="text"
+          type="number"
           placeholder="Amount of repetitions"
           onChange={(e) => setRepetition(e.target.value)}
           value={repetition}
@@ -86,50 +94,27 @@ const HabitsPage = () => {
       </div>
 
       <h2 className="header">Your Habits</h2>
+      <select
+        onChange={(e) => {
+          setFilteredPriority(e.target.value);
+        }}
+      >
+        <option value={""}>Select a priority</option>
+        <option value={"low"}>Low</option>
+        <option value={"mid"}>Mid</option>
+        <option value={"high"}>High</option>
+      </select>
+
       <div className="habit-card-container">
-        {habits.map((habit, i) => {
+        {filteredHabits.map((habit, i) => {
           return (
-            <div className="habit-card" key={i}>
-              <p className="habit-card-text">
-                Title: <span>{habit.title}</span>
-              </p>
-              <p className="habit-card-text">
-                Repetition/s: <span>{habit.repetition}</span>
-              </p>
-              <div className="btn-container">
-                <button
-                  className="change-btn"
-                  onClick={() => updateRepetition(i, -1)}
-                >
-                  Minus
-                </button>
-                <button
-                  className="change-btn"
-                  onClick={() => updateRepetition(i, 1)}
-                >
-                  Plus
-                </button>
-                <button
-                  className="change-btn"
-                  onClick={() => resetRepetition(i)}
-                >
-                  Reset
-                </button>
-              </div>
-              <p className="habit-card-text">
-                Priority:{" "}
-                <span
-                  className={`habit-prio habit-prio-${habit.selectedPriority}`}
-                >
-                  {habit.selectedPriority}
-                </span>
-              </p>
-              <div className="delete-btn-container">
-                <button className="delete-btn" onClick={() => deleteHabit(i)}>
-                  Delete Habit
-                </button>
-              </div>
-            </div>
+            <Habit
+              index={i}
+              habit={habit}
+              updateRepetition={updateRepetition}
+              resetRepetition={resetRepetition}
+              deleteHabit={deleteHabit}
+            />
           );
         })}
       </div>
