@@ -11,6 +11,7 @@ body {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  /* position: relative; */
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -109,17 +110,18 @@ input[type="number"]::-webkit-outer-spin-button {
   border: none;
 }
 
-.add-habit-btn {
+.add-habit-btn,
+.sort-btn {
   border: 1px solid white;
   background-color: rgb(71, 48, 48);
   cursor: pointer;
   transition: 0.3s ease;
 }
 
-.add-habit-btn:hover {
+.add-habit-btn:hover,
+.sort-btn:hover {
   transform: scale(1.1);
   border: 2px solid white;
-  font-weight: bold;
   background-color: rgb(60, 38, 38);
 }
 .habit-card-container {
@@ -191,4 +193,21 @@ input[type="number"]::-webkit-outer-spin-button {
 .delete-btn {
   width: 200px;
   margin-bottom: 6%;
+}
+
+.filter-drop-container {
+}
+
+.sort-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+
+.sort-btn:focus {
+  background-color: blue;
+  border: 1px solid white;
+  transform: scale(1.1);
+  transform: 0.3s ease;
 }

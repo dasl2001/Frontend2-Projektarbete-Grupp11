@@ -7,8 +7,14 @@ const HabitsPage = () => {
   const [title, setTitle] = useState("");
   const [repetition, setRepetition] = useState("");
   const [selectedPriority, setSelectedPriority] = useState("");
-  const [habits, setHabits] = useState([]);
+  const [habits, setHabits] = useState(
+    JSON.parse(localStorage.getItem("Habits")) || []
+  );
   const [filteredPriority, setFilteredPriority] = useState("");
+
+  useEffect(() => {
+    localStorage.setItem("Habits", JSON.stringify(habits));
+  }, [habits]);
 
   const prioChange = (prio) => {
     setSelectedPriority(prio);
@@ -63,6 +69,15 @@ const HabitsPage = () => {
       })
     : habits;
 
+  const sortHabits = (sort) => {
+    const sorted = [...filteredHabits].sort((a, b) => {
+      return sort === "someBs"
+        ? a.repetition - b.repetition
+        : b.repetition - a.repetition;
+    });
+    setHabits(sorted);
+  };
+
   return (
     <>
       <h2 className="header">Add a new habit</h2>
@@ -94,17 +109,30 @@ const HabitsPage = () => {
       </div>
 
       <h2 className="header">Your Habits</h2>
-      <select
-        onChange={(e) => {
-          setFilteredPriority(e.target.value);
-        }}
-      >
-        <option value={""}>Select a priority</option>
-        <option value={"low"}>Low</option>
-        <option value={"mid"}>Mid</option>
-        <option value={"high"}>High</option>
-      </select>
+      <div className="filter-drop-container">
+        <h3>Filter by priority</h3>
+        <select
+          className="filter-drop  "
+          onChange={(e) => {
+            setFilteredPriority(e.target.value);
+          }}
+        >
+          <option value={""}>All</option>
+          <option value={"low"}>Low</option>
+          <option value={"mid"}>Mid</option>
+          <option value={"high"}>High</option>
+        </select>
+      </div>
 
+      <div className="sort-container">
+        <h3>Sort by repetitions</h3>
+        <button className="sort-btn" onClick={() => sortHabits("someBs")}>
+          Low to High
+        </button>
+        <button className="sort-btn" onClick={() => sortHabits("otherBs")}>
+          High to low
+        </button>
+      </div>
       <div className="habit-card-container">
         {filteredHabits.map((habit, i) => {
           return (
