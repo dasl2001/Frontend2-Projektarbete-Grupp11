@@ -3,7 +3,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  background-color: rgba(5, 5, 59, 0.5);
+  background-color: rgba(239, 243, 244, 0.973);
 }
 
 #root {
