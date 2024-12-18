@@ -3,6 +3,7 @@ Moduler och komponenter importeras.
 */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import TodoDetails from '../components/TodoDetails'
 import '../css/todo.css';
 
 /*
@@ -24,7 +25,6 @@ sortBy är en sträng som anger vilket kriterium som ska användas för att sort
   const [date, setDate] = useState('');
   const [category, setCategory] = useState('');
   const [minutes, setMinutes] = useState('');
-
   const [showCompleted, setShowCompleted] = useState(true);
   const [filterCategories, setFilterCategories] = useState([]);
   const [sortBy, setSortBy] = useState('');

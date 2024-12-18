@@ -1,3 +1,4 @@
+
 #root {
   max-width: 100%;
 }
@@ -7,7 +8,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
+  background-color: white;
   color: #333;
   display: flex;
   width: 100%;
@@ -15,8 +16,6 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-  font-family: "Montserrat", sans-serif;
-}
 
 .logo {
   height: 6em;
@@ -52,5 +51,5 @@
 .read-the-docs {
   color: #888;
 }
-
+}
 

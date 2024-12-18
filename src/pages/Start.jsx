@@ -5,10 +5,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function Start({ tasks }) {
-  const recentIncompleteTasks = tasks
-    .filter((task) => !task.completed)
-    .slice(-3)
-    .reverse();
+  const recentIncompleteTasks = (tasks || [])
+  .filter((task) => !task.completed)
+  .slice(-3)
+  .reverse();
+
+
 
   return (
     <div>
