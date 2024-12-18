@@ -8,8 +8,6 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import AddUser from './pages/AddUser';
 import Start from './pages/Start';
-import Habits from './pages/Habits'; 
-import Events from './pages/Events';
 import Todo from './pages/Todo';
 
 
@@ -109,8 +107,6 @@ path="/events" renderar Events-komponenten.
             />
           }
         />
-        <Route path="/habits" element={<Habits />} />
-        <Route path="/events" element={<Events />} />
       </Routes>
     </>
   );
