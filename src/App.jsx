@@ -35,7 +35,7 @@ function App() {
 
   function handleLogout() {
     setLoggedInUser(null);
-    setLogoutMessage('Du har loggats ut.');
+    setLogoutMessage('Loggas ut.');
     navigate('/');
   }
 
@@ -43,7 +43,6 @@ function App() {
     <>
       <Navbar loggedInUser={loggedInUser} onLogout={handleLogout} />
       <Routes>
-        {/* Endast tillgängligt när användaren inte är inloggad */}
         {!loggedInUser ? (
           <>
             <Route path="/login" element={<Login userList={userList} setLoggedInUser={setLoggedInUser} logoutMessage={logoutMessage} clearLogoutMessage={() => setLogoutMessage('')} />} />
