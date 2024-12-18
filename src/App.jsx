@@ -20,7 +20,6 @@ function App() {
   const [tasks, setTasks] = useState([]);
 
   const navigate = useNavigate();
-
   useEffect(() => {
     localStorage.setItem('userList', JSON.stringify(userList));
   }, [userList]);
@@ -35,7 +34,7 @@ function App() {
 
   function handleLogout() {
     setLoggedInUser(null);
-    setLogoutMessage('Du har loggats ut.');
+    setLogoutMessage('Loggas ut.');
     navigate('/');
   }
 
@@ -50,10 +49,7 @@ function App() {
         <Route path="/habits" element={<HabitsPage />} />
         <Route path="/todo/:id" element={<TodoDetails tasks={tasks} setTasks={setTasks} />} />
         <Route path="/start" element={<Start tasks={tasks} />} />
-        <Route path="/todo" element={
-            <Todo
-              tasks={tasks}
-              setTasks={(updatedTasks) => {
+        <Route path="/todo" element={<Todo tasks={tasks} setTasks={(updatedTasks) => {
                 setTasks(updatedTasks);
                 if (loggedInUser) {
                   const updatedUser = {
