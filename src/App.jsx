@@ -1,64 +1,128 @@
 /*
-Moduler och komponenter importeras
+Moduler och komponenter importeras.
 */
-import { Routes, Route } from 'react-router-dom';
-import React, { useState } from 'react';
-import Start from './pages/Start';
+import React, { useState, useEffect } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
 import Login from './pages/Login';
 import AddUser from './pages/AddUser';
-import Todo from './pages/Todo';
-import TodoDetails from './components/TodoDetails';
+import Start from './pages/Start';
+import Habits from './pages/Habits'; 
 import Events from './pages/Events';
-import Habits from './pages/Habits';
-import Navbar from './components/Navbar';
+import Todo from './pages/Todo';
+
 
 /*
-useState([]) skapar en state-variabel tasks, som initialt är en tom array.
-setTasks är en funktion som används för att uppdatera tasks.
+userList:
+Lagrar listan över alla användare i applikationen.
+Initialvärdet hämtas från localStorage. 
+Om det finns sparade användare i localStorage, laddas dessa med JSON.parse(savedUsers).
+Annars är listan tom.
+setUserList används för att uppdatera listan över användare.
+loggedInUser:
+Representerar den användare som är inloggad.
+Börjar som null (noll), vilket betyder att ingen är inloggad.
+setLoggedInUser används för att uppdatera vem som är inloggad.
+logoutMessage:
+Lagrar ett meddelande som visas vid utloggning.  
+Uppdateras med setLogoutMessage.
 */
 function App() {
-  const [tasks, setTasks] = useState([]);
-
-
+  const [userList, setUserList] = useState(() => {
+    const savedUsers = localStorage.getItem('userList');
+    return savedUsers ? JSON.parse(savedUsers) : [];
+  });
+  const [loggedInUser, setLoggedInUser] = useState(null);
+  const [logoutMessage, setLogoutMessage] = useState('');
 
 /*
-Routes och Route används från react-router-dom för att definiera navigeringsvägar i applikationen.
-"/" är hemsidan för applikationen och renderar komponenten <Login />.
-"/register" renderar komponenten <AddUser />.
-"/start" renderar komponenten <Start />.
-Passerar tasks som en prop till komponenten. 
-tasks  innehåller data som behövs för startsidan. 
-"/todo" renderar komponenten <Todo />.
-Passerar både tasks och setTasks som props:
-tasks för att visa den aktuella listan med uppgifter.
-setTasks för att möjliggöra att användaren kan lägga till, ta bort eller ändra uppgifter.
-"/todo/:id" renderar komponenten <TodoDetails />.
-:id är en dynamisk parameter som matchar en specifik aktivitet baserat på ID.
-Passerar både tasks och setTasks som props för visning och ändring av aktiviteten.
-"/events" renderar komponenten <Events />.
-"/habits" renderar komponenten <Habits />.
-<Navbar> renderar  navigeringskomponenten. 
+useNavigate är en hook  som används för att navigera mellan olika sidor.
+navigate('/start') används för att skickas /start.
 */
-return (
-  <>
-    <Navbar />
-    <Routes>
-      <Route path="/login" element={<Login />} /> 
-      <Route path="/register" element={<AddUser /> } /> 
-      <Route path="/start" element={<Start tasks={tasks} />} />
-      <Route path="/todo" element={<Todo tasks={tasks} setTasks={setTasks} />} />
-      <Route path="/todo/:id" element={<TodoDetails tasks={tasks} setTasks={setTasks} />} />
-      <Route path="/events" element={<Events />} />
-      <Route path="/habits" element={<Habits />} />
-    </Routes>
-  </>
-);
+  const navigate = useNavigate();
+
+/*
+useEffect körs varje gång userList ändras.
+Sparar den uppdaterade userList i localStorage som en JSON-sträng med localStorage.setItem.
+*/
+  useEffect(() => {
+    localStorage.setItem('userList', JSON.stringify(userList));
+  }, [userList]);
+
+/*
+Sätter loggedInUser till null.
+Visa ett utloggningsmeddelande genom att uppdatera logoutMessage.
+Navigeras sedan tillbaks till hemsidan (/).
+*/
+  function handleLogout() {
+    setLoggedInUser(null);
+    setLogoutMessage('Du har loggats ut.');
+    navigate('/');
+  }
+
+/*
+Navbar används för att visa en navigeringsmeny.
+Använder loggedInUser för att anpassa visningen baserat på om man är inloggad.
+onLogout är funktionen för att logga ut.
+Routes hanterar navigering och renderar olika komponenter baserat på URL.
+Varje Route definierar en specifik path och komponent (element) som ska renderas.
+path="/" renderar Home-komponenten.
+Skickar med logoutMessage och en funktion för att rensa meddelandet.
+path="/login"  renderar Login-komponenten.
+Skickar med userList (användardata) och funktioner för att logga in en användare.
+path="/register" renderar AddUser-komponenten.
+Skickar med userList och setUserList för att registrera nya användare.
+path="/start" renderar Start-komponenten.
+Skickar med uppgifter (tasks) från den inloggade användaren.
+path="/todo" renderar Todo-komponenten.
+Skickar med uppgifter (tasks) och en funktion (setTasks) för att uppdatera dem.
+Vid uppdatering:
+Uppdaterar den inloggade användarens uppgifter.
+Uppdaterar userList med de nya uppgifterna.
+path="/habits" renderar Habits-komponenten. 
+path="/events" renderar Events-komponenten. 
+*/
+  return (
+    <>
+      <Navbar loggedInUser={loggedInUser} onLogout={handleLogout} />
+      <Routes>
+        <Route path="/" element={<Home logoutMessage={logoutMessage} clearLogoutMessage={() => setLogoutMessage('')} />} />
+        <Route path="/login" element={<Login userList={userList} setLoggedInUser={setLoggedInUser} logoutMessage={logoutMessage} clearLogoutMessage={() => setLogoutMessage('')} />} />
+        <Route path="/register" element={<AddUser userList={userList} setUserList={setUserList} />} />
+        <Route path="/start" element={<Start tasks={loggedInUser?.tasks || []} />} />
+        <Route path="/todo"
+          element={
+            <Todo
+              tasks={loggedInUser?.tasks || []}
+              setTasks={(tasks) => {
+                if (loggedInUser) {
+                  const updatedUser = { ...loggedInUser, tasks };
+                  setLoggedInUser(updatedUser);
+                  setUserList((prevList) =>
+                    prevList.map((user) =>
+                      user.username === updatedUser.username ? updatedUser : user
+                    )
+                  );
+                }
+              }}
+            />
+          }
+        />
+        <Route path="/habits" element={<Habits />} />
+        <Route path="/events" element={<Events />} />
+      </Routes>
+    </>
+  );
 }
 
 /*
-Gör App-komponenten tillgänglig för import i andra filer. 
+Gör det möjligt att importera och använda komponenten i andra filer.
 */
 export default App;
+
+
+
 
 
 

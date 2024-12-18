@@ -1,0 +1,142 @@
+/*
+display: flex; använder Flexbox för att arrangera innehållet.
+flex-direction: column; fixar children i en vertikal layout.
+align-items: center; centrerar innehållet horisontellt.
+justify-content: center; centrerar innehållet vertikalt.
+height: 100vh; gör att komponentens höjd till 100vh (viewport height). 
+background-color: transparent; bakgrunden är genomskinlig
+*/
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: transparent;
+  }
+  
+/*
+font-size: 24px; är textstorleken för titeln.
+font-weight: bold; gör texten fet.
+margin-bottom: 20px; lägger till mellanrum under titeln.
+color: black; gör  textfärgen till svart.
+*/
+  .login-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: black;
+  }
+  
+/*
+display: flex; skapar formulärfälten i en flexibel layout.
+flex-direction: column; arrangerar fälten vertikalt.
+gap: 15px; skapar ett mellanrum på 15 pixlar mellan fälten.
+padding: 20px; lägger till inre marginal (mellanrum mellan kant och innehåll).
+background: white; bakgrunden är vit.
+border-radius: 8px; rundar hörnen på formuläret.
+box-shadow: 0px 4px 6px black; lägger till en skuggeffekt.
+width: 300px; bredden på formuläret.
+*/
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px black;
+    width: 300px;
+  }
+  
+/*
+padding: 10px; inre marginal runt texten i fältet.
+font-size: 16px; textstorlek för inmatning.
+border: 1px solid white; tunn vit kantlinje runt fältet.
+border-radius: 5px; rundade hörn för inmatningsfältet.
+outline: none; tar bort standardmarkeringen vid fokus.
+transition: border-color 0.3s;: Lägger till en mjuk övergång för kantfärgen. 
+*/
+  .login-input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid white;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  
+/*
+border-color: blue; ändrar kantfärgen till blå vid fokus.
+*/
+  .login-input:focus {
+    border-color: blue;
+  }
+  
+/*
+padding: 10px; skapar inre marginal runt knappens text.
+font-size: 16px; knappens textstorlek.
+background-color: blue; gör bakgrunden blå.
+color: white; textfärgen är vit.
+border: none; tar bort kantlinjen.
+border-radius: 5px; rundar knappens hörn.
+cursor: pointer; ändrar muspekaren till en hand vid hovring.
+transition: background-color 0.3s; lägger till en mjuk övergångseffekt för bakgrundsfärgen.
+*/
+  .login-button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+/*
+background-color: darkblue; ändrar bakgrundsfärgen till mörkblå vid hovring.
+*/
+  .login-button:hover {
+    background-color: darkblue;
+  }
+  
+/*
+color: red; felmeddelanden visas i rött.
+font-size: 14px; textstorlek är 14 pixlar. 
+text-align: center; centrerar texten horisontellt.
+*/
+  .login-error {
+    color: red;
+    font-size: 14px;
+    text-align: center;
+  }
+  
+/*
+color: green; visar meddelandet i grön färg. 
+font-size: 18px;: gör texten till 18 pixlar. 
+margin-bottom: 10px; lägger till ett mellanrum på 10 pixlar nedanför meddelandet.
+text-align: center; centrerar texten horisontellt.
+animation: fadeOut 3s forwards; använder en animering för att gradvis blekna (fade) texten. 
+*/
+  .logout-message {
+    color: green;
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-align: center;
+    animation: fadeOut 3s forwards; 
+  }
+  
+/*
+0% startar med full opacitet (texten är synlig). 
+100% slutar med att elementet blir helt genomskinligt. 
+*/
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  

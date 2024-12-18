@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+
 
 const Habits = () => {
   return (
@@ -9,3 +10,5 @@ const Habits = () => {
 };
 
 export default Habits;
+
+

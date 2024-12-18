@@ -1,11 +1,11 @@
 /*
 Moduler och komponenter importeras
 */
-import { StrictMode } from 'react';
+import React from 'react';
 import { createRoot } from 'react-dom/client';
-import './index.css';
-import App from './App.jsx';
 import { BrowserRouter as Router } from 'react-router-dom';
+import './index.css';
+import App from './App';
 
 /*
 createRoot är en metod som används för att starta en React-applikation.
@@ -17,10 +17,10 @@ StrictMode> är en inbyggd React-komponent som används för att markera potenti
 <App /> är huvudkomponenten i applikationen och alla andra komponenter och funktioner i applikationen inkluderas eller används via denna komponent.
 */
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  <React.StrictMode>
     <Router>
       <App />
     </Router>
-  </StrictMode>
+  </React.StrictMode>
 );
 

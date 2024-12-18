@@ -1,3 +1,15 @@
+/*
+max-width: 500px; begränsar bredden till högst 500 pixlar.
+margin: auto; centrerar elementen horisontellt på sidan.
+padding: 20px; lägger till 20 pixlar för att skapa mellanrum mellan innehållet och kanten.
+background: whitesmoke; sätter bakgrundsfärgen till whitesmoke. 
+border-radius: 10px; rundar hörnen med 10 pixlar.
+box-shadow: 0 4px 8px black; skapar en skugga med:
+0: Ingen horisontell förskjutning.
+4px: Vertikal förskjutning av skuggan.
+8px: Storlek på suddighet.
+black: Skuggans färg.
+*/
 .todo-container,
 .todo-details {
   max-width: 500px;
@@ -8,7 +20,12 @@
   box-shadow: 0 4px 8px black;
 }
 
-
+/*
+display: flex; gör att barnkomponenterna i formuläret placeras i flexbox-layouter.
+flex-direction: column; lägger barnkomponenterna i en vertikal stapel (kolumn).
+gap: 10px; lägger till 10 pixlar mellan varje barnkomponent.
+margin-bottom: 10px; lägger till ett mellanrum under formuläret.
+*/
 .task-form {
   display: flex;
   flex-direction: column;
@@ -16,6 +33,12 @@
   margin-bottom: 10px;
 }
 
+/*
+padding: 10px; lägger till mellanrum inuti elementen.
+border: 1px solid white; skapar en tunn vit kantlinje runt elementen.
+border-radius: 5px; gör hörnen rundade.
+font-size: 14px; anger storleken på texten.
+*/
 .task-form input,
 .task-form textarea,
 .task-form select {
@@ -25,6 +48,16 @@
   font-size: 14px;
 }
 
+/*
+padding: 10px; lägger till utrymme runt texten i knappen.
+background-color: lightgreen; sätter en ljusgrön bakgrundsfärg.
+color: white; gör texten vit.
+border: none; tar bort kantlinjen runt knappen.
+border-radius: 5px; rundar knapparnas hörn.
+cursor: pointer; ändrar muspekaren till en hand för att indikera att knappen är klickbar.
+font-size: 8px; sätter en textstorlek på 8 pixlar för knappen.
+Hover-effekt (:hover) vid hovring ändras bakgrundsfärgen till mörkgrön.
+*/
 .task-form button {
   padding: 10px;
   background-color: lightgreen;
@@ -34,16 +67,25 @@
   cursor: pointer;
   font-size: 8px;
 }
-
 .task-form button:hover {
   background-color: darkgreen;
 }
 
-
+/*
+margin-top: 20px; lägger till utrymme ovanför listan med aktiviteter.
+*/
 .task-list {
   margin-top: 20px;
 }
 
+/*
+padding: 15px; lägger till inre marginal inuti varje aktivitet.
+border: 1px solid whitesmoke; ger en tunn kantlinje som matchar bakgrunden. 
+border-radius: 5px; rundar hörnen.
+background: white; sätter en vit bakgrundsfärg.
+margin-bottom: 10px; lägger till avstånd mellan aktiviteter.
+box-shadow: 0 2px 4px black; ger en mindre skuggeffekt.
+*/
 .task-item {
   padding: 15px;
   border: 1px solid whitesmoke;
@@ -53,21 +95,38 @@
   box-shadow: 0 2px 4px black;
 }
 
+/*
+margin: 0; tar bort standardmarginaler för rubriken.
+*/
 .task-item h3 {
   margin: 0;
 }
 
+/*
+color: blue; gör länken blå.
+text-decoration: none; tar bort understrykning från länken.
+font-weight: bold; gör texten fet.
+Hover-effekt (:hover) vid hovring visas en understrykning. 
+*/
 .task-item a {
   color: blue;
   text-decoration: none;
   font-weight: bold;
 }
-
 .task-item a:hover {
   text-decoration: underline;
 }
 
-
+/*
+margin-right: 10px; lägger till mellanrum mellan knappar.
+padding: 10px; ger utrymme runt texten i knappen.
+background-color: blue; sätter en blå bakgrundsfärg.
+color: white; gör texten vit.
+border: none; tar bort kantlinjen.
+border-radius: 5px; rundar hörnen.
+cursor: pointer; gör muspekaren till en hand vid hovring.
+Hover-effekt (:hover) färgen blir fortfarande blå.
+*/
 .todo-details button {
   margin-right: 10px;
   padding: 10px;
@@ -78,7 +137,6 @@
   cursor: pointer;
   font-size: 14px;
 }
-
 .todo-details button:hover {
   background-color: blue;
 }
