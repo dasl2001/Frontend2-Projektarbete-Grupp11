@@ -1,0 +1,213 @@
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: rgba(5, 5, 59, 0.5);
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  /* position: relative; */
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+.header {
+  font-size: 2rem;
+  border-bottom: 1px solid white;
+}
+
+.priority-box-low,
+.priority-box-mid,
+.priority-box-high {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 12px;
+  margin: 0 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.hide-prio {
+  display: none;
+}
+
+.priority-box-low,
+.habit-prio-low {
+  border: 1px solid rgba(37, 146, 37, 0.5);
+  transition: 0.3s ease;
+}
+.priority-box-low:hover {
+  border: 1px solid rgba(37, 146, 37, 0.5);
+  transform: scale(1.1);
+}
+
+.priority-box-mid,
+.habit-prio-mid {
+  border: 1px solid rgba(230, 197, 0, 0.5);
+  transition: 0.3s ease;
+}
+
+.priority-box-mid:hover {
+  border: 1px solid rgba(230, 197, 0, 0.5);
+  transform: scale(1.1);
+}
+.priority-box-high,
+.habit-prio-high {
+  border: 1px solid rgba(243, 5, 5, 0.5);
+  transition: 0.3s ease;
+}
+
+.priority-box-high:hover {
+  border: 1px solid rgba(243, 5, 5, 0.5);
+  transform: scale(1.1);
+}
+
+.priority-box-low:has(:checked),
+.habit-prio-low {
+  background-color: rgba(37, 146, 37, 0.3);
+}
+.priority-box-mid:has(:checked),
+.habit-prio-mid {
+  background-color: rgba(230, 197, 14, 0.3);
+}
+.priority-box-high:has(:checked),
+.habit-prio-high {
+  background-color: rgba(243, 5, 5, 0.3);
+}
+
+.add-habit-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+  border: 2px solid white;
+  padding: 20px;
+  border-radius: 25px;
+  max-width: fit-content;
+}
+
+.input-title,
+.input-repetition {
+  height: 30px;
+  background-color: white;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: black;
+  border: none;
+}
+
+.add-habit-btn,
+.sort-btn {
+  border: 1px solid white;
+  background-color: rgb(71, 48, 48);
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.add-habit-btn:hover,
+.sort-btn:hover {
+  transform: scale(1.1);
+  border: 2px solid white;
+  background-color: rgb(60, 38, 38);
+}
+.habit-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 50px;
+}
+.habit-card {
+  border: 3px solid white;
+  border-radius: 25px;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgba(11, 11, 52, 0.75);
+}
+.habit-card-text {
+  font-weight: bold;
+  margin-right: auto;
+  padding-left: 10px;
+  font-size: 20px;
+}
+
+.habit-card-text span {
+  font-weight: lighter;
+}
+
+.habit-prio {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 15px;
+  margin: 0 5%;
+}
+
+.change-btn,
+.delete-btn {
+  display: flex;
+  background-color: rgb(71, 48, 48);
+  cursor: pointer;
+  transition: 0.3s ease;
+  border: 1px solid white;
+  width: 80px;
+  justify-content: center;
+}
+
+.change-btn:hover,
+.delete-btn:hover {
+  transform: scale(1.1);
+  border: 1px solid white;
+  background-color: rgb(60, 38, 38);
+}
+
+.delete-btn-container {
+  display: flex;
+  justify-content: center;
+}
+
+.delete-btn {
+  width: 200px;
+  margin-bottom: 6%;
+}
+
+.filter-drop-container {
+}
+
+.sort-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+
+.sort-btn:focus {
+  background-color: blue;
+  border: 1px solid white;
+  transform: scale(1.1);
+  transform: 0.3s ease;
+}

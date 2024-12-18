@@ -9,6 +9,8 @@ import Login from './pages/Login';
 import AddUser from './pages/AddUser';
 import Start from './pages/Start';
 import Todo from './pages/Todo';
+import "./App.css";
+import HabitsPage from "./pages/HabitsPage";
 
 
 /*
@@ -88,6 +90,7 @@ path="/events" renderar Events-komponenten.
         <Route path="/" element={<Home logoutMessage={logoutMessage} clearLogoutMessage={() => setLogoutMessage('')} />} />
         <Route path="/login" element={<Login userList={userList} setLoggedInUser={setLoggedInUser} logoutMessage={logoutMessage} clearLogoutMessage={() => setLogoutMessage('')} />} />
         <Route path="/register" element={<AddUser userList={userList} setUserList={setUserList} />} />
+        <Route path="/habits" element={<HabitsPage />} />
         <Route path="/start" element={<Start tasks={loggedInUser?.tasks || []} />} />
         <Route path="/todo"
           element={
@@ -102,21 +105,19 @@ path="/events" renderar Events-komponenten.
                       user.username === updatedUser.username ? updatedUser : user
                     )
                   );
+                  
                 }
-              }}
-            />
+                
+              }}/>} />
+              </Routes>
+              </>)
           }
-        />
-      </Routes>
-    </>
-  );
-}
+
+export default App;
 
 /*
 Gör det möjligt att importera och använda komponenten i andra filer.
 */
-export default App;
-
 
 
 
