@@ -3,18 +3,27 @@ import "../css/Habits.css";
 import PriorityComponent from "../components/PriorityComponent";
 import Habit from "../components/Habits";
 
-const HabitsPage = () => {
+const HabitsPage = ({ loggedInUser, setLoggedInUser, setUserList }) => {
   const [title, setTitle] = useState("");
   const [repetition, setRepetition] = useState("");
   const [selectedPriority, setSelectedPriority] = useState("");
-  const [habits, setHabits] = useState(
-    JSON.parse(localStorage.getItem("Habits")) || []
-  );
+  const [habits, setHabits] = useState(loggedInUser?.habits || []);
   const [filteredPriority, setFilteredPriority] = useState("");
 
   useEffect(() => {
-    localStorage.setItem("Habits", JSON.stringify(habits));
-  }, [habits]);
+    if (loggedInUser) {
+      const updatedUser = {
+        ...loggedInUser,
+        habits,
+      };
+      setLoggedInUser(updatedUser);
+      setUserList((prevList) =>
+        prevList.map((user) =>
+          user.username === updatedUser.username ? updatedUser : user
+        )
+      );
+    }
+  }, [habits, loggedInUser, setLoggedInUser, setUserList]);
 
   const prioChange = (prio) => {
     setSelectedPriority(prio);
@@ -71,7 +80,7 @@ const HabitsPage = () => {
 
   const sortHabits = (sort) => {
     const sorted = [...filteredHabits].sort((a, b) => {
-      return sort === "someBs"
+      return sort === "asc"
         ? a.repetition - b.repetition
         : b.repetition - a.repetition;
     });
@@ -80,19 +89,19 @@ const HabitsPage = () => {
 
   return (
     <>
-      <h2 className="header">Add a new habit</h2>
+      <h2 className="header">Lägg till en vana</h2>
       <div className="add-habit-container">
         <input
           className="input-title"
           type="text"
-          placeholder="Enter title"
+          placeholder="Ange titel"
           onChange={(e) => setTitle(e.target.value)}
           value={title}
         ></input>
         <input
           className="input-repetition"
           type="number"
-          placeholder="Amount of repetitions"
+          placeholder="Ange repetition/er"
           onChange={(e) => setRepetition(e.target.value)}
           value={repetition}
         ></input>
@@ -104,33 +113,33 @@ const HabitsPage = () => {
         </div>
 
         <button className="add-habit-btn" onClick={addHabit}>
-          Add
+          Lägg till
         </button>
       </div>
 
-      <h2 className="header">Your Habits</h2>
+      <h2 className="header">Dina Vanor</h2>
       <div className="filter-drop-container">
-        <h3>Filter by priority</h3>
+        <h3>Filtrera prioritet</h3>
         <select
           className="filter-drop  "
           onChange={(e) => {
             setFilteredPriority(e.target.value);
           }}
         >
-          <option value={""}>All</option>
-          <option value={"low"}>Low</option>
-          <option value={"mid"}>Mid</option>
-          <option value={"high"}>High</option>
+          <option value={""}>Alla</option>
+          <option value={"low"}>Låg</option>
+          <option value={"mid"}>Medel</option>
+          <option value={"high"}>Hög</option>
         </select>
       </div>
 
       <div className="sort-container">
-        <h3>Sort by repetitions</h3>
-        <button className="sort-btn" onClick={() => sortHabits("someBs")}>
-          Low to High
+        <h3>Sortera repetitioner</h3>
+        <button className="sort-btn" onClick={() => sortHabits("asc")}>
+          Låg till Hög
         </button>
-        <button className="sort-btn" onClick={() => sortHabits("otherBs")}>
-          High to low
+        <button className="sort-btn" onClick={() => sortHabits("desc")}>
+          Hög till Låg
         </button>
       </div>
       <div className="habit-card-container">

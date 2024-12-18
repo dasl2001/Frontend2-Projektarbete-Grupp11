@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function AddUser({ userList, setUserList }) {
-  const [newUsername, setNewUsername] = useState('');
-  const [newPassword, setNewPassword] = useState('');
-  const [registerMessage, setRegisterMessage] = useState('');
+  const [newUsername, setNewUsername] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [registerMessage, setRegisterMessage] = useState("");
   const navigate = useNavigate();
 
   function handleRegisterClick() {
@@ -12,21 +12,21 @@ function AddUser({ userList, setUserList }) {
       const userExists = userList.some((user) => user.username === newUsername);
 
       if (userExists) {
-        setRegisterMessage('Användarnamnet upptaget.');
+        setRegisterMessage("Användarnamnet upptaget.");
       } else {
         const newUser = {
           username: newUsername,
           password: newPassword,
           tasks: [],
-          routines: [],
+          habits: [],
           events: [],
         };
-        setUserList((prevList) => [...prevList, newUser]); 
-        setRegisterMessage('Användare registrerad.');
-        setTimeout(() => navigate('/login'), 500); 
+        setUserList((prevList) => [...prevList, newUser]);
+        setRegisterMessage("Användare registrerad.");
+        setTimeout(() => navigate("/login"), 500);
       }
     } else {
-      setRegisterMessage('Vänligen fyll i alla fält.');
+      setRegisterMessage("Vänligen fyll i alla fält.");
     }
   }
 
@@ -52,6 +52,3 @@ function AddUser({ userList, setUserList }) {
 }
 
 export default AddUser;
-
-
-

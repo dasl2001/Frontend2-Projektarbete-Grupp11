@@ -11,10 +11,10 @@ const Habit = ({
     <>
       <div className="habit-card" key={index}>
         <p className="habit-card-text">
-          Title: <span>{habit.title}</span>
+          Titel: <span>{habit.title}</span>
         </p>
         <p className="habit-card-text">
-          Repetition/s: <span>{habit.repetition}</span>
+          Repetition/er: <span>{habit.repetition}</span>
         </p>
         <div className="btn-container">
           <button
@@ -30,18 +30,18 @@ const Habit = ({
             Plus
           </button>
           <button className="change-btn" onClick={() => resetRepetition(index)}>
-            Reset
+            Nollställ
           </button>
         </div>
         <p className="habit-card-text">
-          Priority:{" "}
+          Prioritet:{" "}
           <span className={`habit-prio habit-prio-${habit.selectedPriority}`}>
             {habit.selectedPriority}
           </span>
         </p>
         <div className="delete-btn-container">
           <button className="delete-btn" onClick={() => deleteHabit(index)}>
-            Delete Habit
+            Radera
           </button>
         </div>
       </div>

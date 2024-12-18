@@ -13,7 +13,7 @@ const PriorityComponent = ({ changedPrio, selectedPriority }) => {
           checked={selectedPriority === "low"}
           onChange={() => changedPrio("low")}
         ></input>
-        Low
+        Låg
       </label>
       <label htmlFor="prioMid" className="priority-box-mid">
         <input
@@ -25,7 +25,7 @@ const PriorityComponent = ({ changedPrio, selectedPriority }) => {
           checked={selectedPriority === "mid"}
           onChange={() => changedPrio("mid")}
         ></input>
-        Mid
+        Medel
       </label>
       <label htmlFor="prioHigh" className="priority-box-high">
         <input
@@ -37,7 +37,7 @@ const PriorityComponent = ({ changedPrio, selectedPriority }) => {
           checked={selectedPriority === "high"}
           onChange={() => changedPrio("high")}
         ></input>
-        High
+        Hög
       </label>
     </>
   );
