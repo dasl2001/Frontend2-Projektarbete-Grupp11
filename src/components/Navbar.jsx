@@ -7,7 +7,7 @@ import '../css/navbar.css';
 
 
 /*
-Navbar är en funktionell komponent i React.
+Navbar är en funktion komponent i React.
 loggedInUser är en prop som indikerar om det finns en användare inloggad.
 Om loggedInUser är null eller undefined, visas inte "Logga ut"-knappen.
 onLogout är en funktion som körs när användaren klickar på "Logga ut".
