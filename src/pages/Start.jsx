@@ -4,6 +4,7 @@ Moduler och komponenter importeras
 import React from "react";
 import { Link } from "react-router-dom";
 import "../css/Habits.css";
+import "../css/start.css";
 
 function Start({ tasks, habits }) {
   const recentIncompleteTasks = (tasks || [])
