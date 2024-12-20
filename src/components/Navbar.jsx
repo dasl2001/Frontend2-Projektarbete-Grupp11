@@ -25,6 +25,7 @@ Länkarna inkluderar /login, /register, /start, /todo, /events, /habits
 loggedInUser ? ... : ...: är en ternär operator som kontrollerar om loggedInUser är true. 
 Om användaren är inloggad visas en knapp: <button onClick={onLogout}>Logga ut</button>.
 När knappen klickas anropas onLogout för att logga ut användaren.
+Om ingen användare är inloggad visas login-sidan "/login". 
 */
   return (
     <nav className="navbar">
@@ -39,7 +40,13 @@ När knappen klickas anropas onLogout för att logga ut användaren.
           <li><Link to="/todo">Todos & Activities</Link></li>
           <li><Link to="/events">Event calendar</Link></li>
           <li><Link to="/habits">Habits</Link></li>
-          <li><button onClick={onLogout}>Logga ut</button> </li>
+          {loggedInUser ? (
+            <li>
+              <button onClick={onLogout}>Logga ut</button>
+            </li>
+          ) : (
+            <li><Link to="/login"></Link></li>
+          )}
         </ul>
       </div>
     </nav>
