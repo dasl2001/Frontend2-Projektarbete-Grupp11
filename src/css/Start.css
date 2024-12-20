@@ -63,7 +63,7 @@ width: 100%; gör listan lika bred som sin container.
   }
 
 /*
-background-color: whitesmoke; sätter bakgrundsfärgen till ljusgrå. 
+background-color: whitesmoke; ljusgrå bakgrundsfärg. 
 margin-bottom: 15px; lägger till utrymme mellan uppgifterna i listan.
 padding: 15px; lägger till inre marginal runt innehållet i varje uppgift.
 border-radius: 8px; ger rundade hörn. 

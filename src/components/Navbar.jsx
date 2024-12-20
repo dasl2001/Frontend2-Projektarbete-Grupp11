@@ -23,7 +23,7 @@ className="logo" är en CSS-klass för att styla logotypen.
 Varje <li> innehåller en Link-komponent som används för att navigera till olika sidor. 
 Länkarna inkluderar /login, /register, /start, /todo, /events, /habits
 loggedInUser ? ... : ...: är en ternär operator som kontrollerar om loggedInUser är true. 
-Om användaren är inloggad visas en knapp: <button onClick={onLogout}>Logga ut</button>.
+Om användaren är inloggad visas knappen <button onClick={onLogout}>Logga ut</button>.
 När knappen klickas anropas onLogout för att logga ut användaren.
 Om ingen användare är inloggad visas login-sidan "/login". 
 */
