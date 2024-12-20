@@ -17,6 +17,7 @@ black: Skuggans färg.
   padding: 20px;
   background: whitesmoke;
   border-radius: 10px;
+  color: black;
   box-shadow: 0 4px 8px black;
 }
 
@@ -46,6 +47,8 @@ font-size: 14px; anger storleken på texten.
   border: 1px solid white;
   border-radius: 5px;
   font-size: 14px;
+  background-color: white;
+  color: black;
 }
 
 /*
@@ -140,9 +143,3 @@ Hover-effekt (:hover) färgen blir fortfarande blå.
 .todo-details button:hover {
   background-color: blue;
 }
-
-  
-  
-
-  
-  
