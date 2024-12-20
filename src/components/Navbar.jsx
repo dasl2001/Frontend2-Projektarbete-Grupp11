@@ -59,7 +59,9 @@ Om ingen användare är inloggad visas login-sidan "/login".
           </li>
           {loggedInUser ? (
             <li>
-              <button onClick={onLogout}>Logga ut</button>
+              <button className="logout-btn" onClick={onLogout}>
+                Logga ut
+              </button>
             </li>
           ) : (
             <>

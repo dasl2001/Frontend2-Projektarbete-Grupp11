@@ -3,7 +3,7 @@ body:has(.add-habit-container) {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  background-color: rgba(5, 5, 59, 0.5);
+  background-color: rgb(5, 5, 59);
 }
 
 #root {
@@ -126,6 +126,7 @@ input[type="number"]::-webkit-outer-spin-button {
   background-color: rgb(71, 48, 48);
   cursor: pointer;
   transition: 0.3s ease;
+  color: white;
 }
 
 .add-habit-btn:hover,
@@ -186,6 +187,7 @@ input[type="number"]::-webkit-outer-spin-button {
   border: 1px solid white;
   width: 80px;
   justify-content: center;
+  color: white;
 }
 
 .change-btn:hover,
