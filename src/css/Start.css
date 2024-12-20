@@ -1,0 +1,135 @@
+/*
+display: flex; gör containern till ett flexbox-element. 
+flex-direction: column; gör innehållet vertikalt.
+align-items: center; centrerar innehållet horisontellt.
+justify-content: center; centrerar innehållet vertikalt. 
+padding: 20px; lägger till inre marginal för att skapa utrymme runt innehållet.
+max-width: 600px; begränsar bredden på containern på 600 pixlar. 
+margin: 0 auto; centrerar containern horisontellt.
+background-color: white; sätter bakgrundsfärgen till vit.
+border-radius: 10px; rundade hörn.
+box-shadow: 0 4px 8px black; lägger till en skugga. 
+*/
+.start-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px black;
+  }
+  
+/*
+font-size: 24px; gör titeln stor och tydlig.
+font-weight: bold; gör texten fet.
+color: black; ställer in textfärgen till svart.
+margin-bottom: 20px; lägger till utrymme under titeln.
+text-align: center; centrerar texten.
+*/
+  .start-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+
+/*
+font-size: 18px; gör texten till 18 pixlar. 
+color: grey; sätter textfärgen till grå 
+text-align: center; centrerar texten.
+*/
+  .start-no-tasks {
+    font-size: 18px;
+    color: grey;
+    text-align: center;
+  }
+
+/*
+list-style-type: none; tar bort standardkulorna från listan.
+padding: 0; margin: 0; tar bort standardavstånd för listan.
+width: 100%; gör listan lika bred som sin container.
+*/
+  .start-task-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+
+/*
+background-color: whitesmoke; ljusgrå bakgrundsfärg. 
+margin-bottom: 15px; lägger till utrymme mellan uppgifterna i listan.
+padding: 15px; lägger till inre marginal runt innehållet i varje uppgift.
+border-radius: 8px; ger rundade hörn. 
+box-shadow: 0 2px 4px black; lägger till en lätt skugga.
+*/
+  .start-task-item {
+    background-color: whitesmoke;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px black;
+  }
+
+/*
+font-size: 20px; gör texten till 20 pixlar. 
+font-weight: bold; gör texten fet. 
+color: black; ställer in textfärgen till svart.
+margin-bottom: 5px; lägger till ett litet mellanrum under titeln.
+*/
+  .start-task-item h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 5px;
+  }
+  
+/*
+front-size: 16px; sätter textstorleken till 16 pixlar. 
+color: black; gör textfärgen svart. 
+margin: 5px 0; lägger till lite avstånd ovanför och under varje stycke.
+*/
+  .start-task-item p {
+    font-size: 16px;
+    color: black;
+    margin: 5px 0;
+  }
+  
+/*
+display: inline-block; gör länken till en knapp.
+margin-top: 20px; lägger till utrymme ovanför länken.
+padding: 10px 20px; lägger till inre marginal för att ge en större klickyta.
+font-size: 16px; gör texten till 16 pixlar. 
+font-weight: bold; gör texten fet.
+color: white; sätter textfärgen till vit.
+background-color: green; sätter bakgrundsfärgen till grön.
+border-radius: 5px; gör hörnen rundade.
+text-decoration: none; tar bort understrykning av länken.
+transition: background-color 0.3s; lägger till en mjuk färgändring vid hover.
+*/
+  .start-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;;
+    background-color: green;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+  
+/*
+background-color: transparent; gör bakgrunden genomskinlig vid hover. 
+*/
+  .start-link:hover {
+    background-color: transparent;
+  }
+  

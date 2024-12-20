@@ -16,14 +16,16 @@ function Start({ tasks, habits }) {
     .slice(0, 3);
 
   return (
-    <div>
-      <h2>Pågående aktiviteter</h2>
+    <div className="start-container">
+      <h2 className="start-title">Pågående aktiviteter</h2>
       {recentIncompleteTasks.length === 0 ? (
-        <p>Inga pågående aktiviteter finns, bra jobbat!</p>
+        <p className="start-no-tasks">
+          Inga pågående aktiviteter finns, bra jobbat!
+        </p>
       ) : (
-        <ul>
+        <ul className="start-task-list">
           {recentIncompleteTasks.map((task) => (
-            <li key={task.id}>
+            <li className="start-task-item" key={task.id}>
               <h3>{task.title}</h3>
               <p>{task.description}</p>
               <p>Deadline: {task.date}</p>
@@ -32,7 +34,9 @@ function Start({ tasks, habits }) {
         </ul>
       )}
 
-      <Link to="/todo">Se alla aktiviteter</Link>
+      <Link to="/todo" className="start-link">
+        Se alla aktiviteter
+      </Link>
 
       <h2>Topp 3 vanor</h2>
       {startHabits.length === 0 ? (

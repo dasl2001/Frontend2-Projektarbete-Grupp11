@@ -13,12 +13,13 @@ Todo komponenten tar 2 parametrar som skickas in av en föräldrakomponent:
 Dessa gör att Todo kan interagera med den delade datan i applikationen.
 */
 function Todo({ tasks, setTasks }) {
+
 /*
-useState är en hook som används för att hantera tillstånd i komponenten.
-title, description, date, category, minutes är inmatning för att skapa nya uppgifter.
-showCompleted är en boolean som styr om slutförda aktiviteten.
-filterCategories är en array som lagrar valda kategorier för filtrering.
-sortBy är en sträng som anger vilket kriterium som ska användas för att sortera aktiviteterna.
+Använder flera useState-hooks för att hantera dess interna tillstånd. 
+title, description, date, category, minutes håller data för att skapa en ny aktivitet (inmatningsfält).
+showCompleted är en boolean som styr om slutförda aktiviteter ska visas.
+filterCategories är en array som innehåller kategorier valda för filtrering.
+sortBy är en sträng som anger vilket sorteringskriterium som ska användas.
 */
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -49,7 +50,6 @@ Lägger till aktiviteten i listan och uppdaterar tasks genom att kopiera befintl
         minutes,
         completed: false,
       };
-
       setTasks([...tasks, newTask]);
       setTitle('');
       setDescription('');
@@ -75,7 +75,7 @@ Annars läggs den till.
 /*
 Filtrerar aktiviteter baserat på showCompleted och filterCategories.
 Om showCompleted är false filtreras slutförda aktiviten bort.
-Om inga kategorier är valda visas alla aktiviteter. 
+Om inga kategorier är valda (filterCategories.length === 0) visas alla aktiviteter. 
 Annars visas bara aktiviteten vars kategori finns i filterCategories.
 */
   const filteredTasks = tasks
@@ -85,10 +85,11 @@ Annars visas bara aktiviteten vars kategori finns i filterCategories.
     );
 
 /*
-Skapar en sorterad lista baserat på sortBy. 
-date sorterar efter deadline (stigande).
-minutes sorterar efter tidsuppskattning (stigande).
-status sorterar så att ofullständiga aktiviteter kommer först.
+Skapar en kopia av filteredTasks för att sortera utan att ändra originalet.
+date sortera efter datum (stigande).
+minutes sortera efter tidsuppskattning (stigande).
+status ofullständiga aktiviteter visas före slutförda.
+om inget kriterium är valt (sortBy === '') returneras listan oförändrad.
 */
   const sortedTasks = [...filteredTasks].sort((a, b) => {
     if (sortBy === 'date') {
@@ -106,12 +107,10 @@ status sorterar så att ofullständiga aktiviteter kommer först.
 <div className="todo-container">:
 Skapar ett formulär för att mata in nya aktiviteter.
 När man klickar på "Lägg till" anropas addTask.
-<div>
-<label>
-<input type="checkbox" checked={showCompleted}:
-Denna div används för att  filtrera och sortera aktiviteter dynamiskt.
-<div className="task-list">:
-Visar ativiteterna som matchar filtrerings- och sorteringskriterierna.
+<div> innehåller checkbox för slutförda aktiviteter som styr showCompleted.
+Sorteringsdropdown som låter oss välja sorteringskriterium (date, minutes, status).
+Om inga aktiviteter matchar, visas meddelandet "Inga aktiviteter matchar valda filter.".
+Om aktiviteter finns iterera över sortedTasks och rendera en lista med aktivitetens detaljer.
 */
   return (
     <div className="todo-container">
@@ -181,7 +180,6 @@ Visar ativiteterna som matchar filtrerings- och sorteringskriterierna.
           </select>
         </div>
       </div>
-
       <h2>Dina aktiviteter</h2>
       <div className="task-list">
         {sortedTasks.length === 0 ? (
