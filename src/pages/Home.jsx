@@ -40,7 +40,6 @@ CSS-klassen som används är logout-message.
   );
 }
 
-
 /*
 Gör det tillgänglig för import i andra filer.
 */

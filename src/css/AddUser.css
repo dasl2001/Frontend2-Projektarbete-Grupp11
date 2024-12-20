@@ -1,0 +1,105 @@
+/*
+display: flex; gör containern till ett flexbox-element för enklare layout.
+flex-direction: column; fixar innehållet i containern vertikalt.
+align-items: center; centrerar innehållet horisontellt.
+padding: 20px; lägger till utrymme inuti containern för att skapa en snyggare layout.
+background-color: white; sätter bakgrundsfärgen till vit.
+border-radius: 8px; ger rundade hörn. 
+box-shadow: 0 4px 8px black; lägger till en skugga. 
+max-width: 400px; begränsar bredden till 400 pixlar.
+margin: 0 auto; centrerar containern horisontellt.
+position: absolute; positionerar containern relativt till sitt närmaste positionerade parent. 
+top: 50%; left: 50%; flyttar containern till mitten av skärmen.
+transform: translate(-50%, -50%); justerar containerns egna storlek så att den är i mitten. 
+*/
+.add-user-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px black;
+  max-width: 400px;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+  
+/*
+font-size: 24px; sätter textstorleken på 24 pixlar för titeln.
+font-weight: bold; gör texten fet.
+color: black; ställer in textfärgen till svart.
+margin-bottom: 20px; lägger till ett mellanrum under titeln.
+*/
+  .add-user-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 20px;
+  }
+  
+/*
+width: 100%; gör inmatningsfältet lika brett som containern.
+padding: 10px; lägger till utrymme inuti inmatningsfältet. 
+margin-bottom: 15px; lägger till mellanrum mellan inmatningsfälten.
+border: 1px solid whitesmoke; skapar en tunn jusgrå ram.
+border-radius: 5px; rundade hörn.
+font-size: 16px;: ställer in textstorleken på 16 pixlar i inmatningsfältet.
+box-sizing: border-box; inkluderar padding och border i fältets totala bredd.
+*/
+  .add-user-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid whitesmoke;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+  
+/*
+padding: 10px 20px; lägger till utrymme inuti knappen. 
+font-size: 16px; gör texten till 16 pixlar. 
+font-weight: bold; gör texten fet.
+color: white; gör textfärgen till vit.
+background-color: greenyellow; knappen ljusgrön färg.
+border: none; tar bort standardkanten för knappar.
+border-radius: 5px; ger knappen rundade hörn.
+cursor: pointer; förändrar muspekaren till en pekare vid hover. 
+transition: background-color 0.3s; gör att bakgrundsfärgen förändras smidigt vid hover.
+*/
+  .add-user-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: lightgreen;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+/*
+background-color: darkgreen; ändrar bakgrundsfärgen till mörkgrön när vi hovrar över knappen.
+*/
+  .add-user-button:hover {
+    background-color: darkgreen;
+  }
+  
+/*
+margin-top: 15px; lägger till ett mellanrum ovanför meddelandet.
+font-size: 14px; gör texten till 14 pixlar. 
+color: red; sätter textfärgen till röd. 
+text-align: center; centrerar texten.
+*/
+  .add-user-message {
+    margin-top: 15px;
+    font-size: 14px;
+    color: red;
+    text-align: center;
+  }
+  
