@@ -1,10 +1,8 @@
 /*
 Moduler och komponenter importeras.
 */
-import { Link } from 'react-router-dom';
-import '../css/navbar.css';
-
-
+import { Link, useLocation } from "react-router-dom";
+import "../css/navbar.css";
 
 /*
 Navbar är en funktionell komponent i React.
@@ -13,8 +11,9 @@ Om loggedInUser är null eller undefined, visas inte "Logga ut"-knappen.
 onLogout är en funktion som körs när användaren klickar på "Logga ut".
 */
 function Navbar({ loggedInUser, onLogout }) {
+  const location = useLocation();
 
-/*
+  /*
 <nav> är HTML-elementet för navigering.
 className="navbar" CSS-klass för att styla navigeringsmenyn.
 <h2> visar logotypen eller rubriken för navigeringsmenyn.
@@ -30,24 +29,42 @@ När knappen klickas anropas onLogout för att logga ut användaren.
 Om ingen användare är inloggad visas hem-sidan "/". 
 */
   return (
-    <nav className="navbar">
+    <nav
+      className={location.pathname === "/habits" ? "navbar habits" : "navbar"}
+    >
       <h2 className="navbar-left">
-        <Link to="/" className="logo">Grupp11</Link>
+        <Link to="/" className="logo">
+          Grupp11
+        </Link>
       </h2>
       <div className="navbar-center">
         <ul className="nav-links">
-          <li><Link to="/login">Logga in</Link></li>
-          <li><Link to="/register">Registrera</Link> </li>
-          <li><Link to="/start">Startsida</Link></li>
-          <li><Link to="/todo">Todos & Activities</Link></li>
-          <li><Link to="/events">Event calendar</Link></li>
-          <li><Link to="/habits">Habits</Link></li>
+          <li>
+            <Link to="/login">Logga in</Link>
+          </li>
+          <li>
+            <Link to="/register">Registrera</Link>{" "}
+          </li>
+          <li>
+            <Link to="/start">Startsida</Link>
+          </li>
+          <li>
+            <Link to="/todo">Todos & Activities</Link>
+          </li>
+          <li>
+            <Link to="/events">Event calendar</Link>
+          </li>
+          <li>
+            <Link to="/habits">Habits</Link>
+          </li>
           {loggedInUser ? (
             <li>
               <button onClick={onLogout}>Logga ut</button>
             </li>
           ) : (
-            <li><Link to="/"></Link></li>
+            <li>
+              <Link to="/"></Link>
+            </li>
           )}
         </ul>
       </div>
@@ -59,5 +76,3 @@ Om ingen användare är inloggad visas hem-sidan "/".
 Gör det möjligt att importera och använda komponenten i andra filer.
 */
 export default Navbar;
-
-

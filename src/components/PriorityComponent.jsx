@@ -25,7 +25,7 @@ const PriorityComponent = ({ changedPrio, selectedPriority }) => {
           checked={selectedPriority === "mid"}
           onChange={() => changedPrio("mid")}
         ></input>
-        Medel
+        Mellan
       </label>
       <label htmlFor="prioHigh" className="priority-box-high">
         <input

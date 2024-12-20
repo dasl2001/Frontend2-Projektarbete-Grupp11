@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "../css/Habits.css";
 import PriorityComponent from "../components/PriorityComponent";
 import Habit from "../components/Habits";
+import "../css/navbar.css";
 
 const HabitsPage = ({ loggedInUser, setLoggedInUser, setUserList }) => {
   const [title, setTitle] = useState("");
@@ -11,7 +12,7 @@ const HabitsPage = ({ loggedInUser, setLoggedInUser, setUserList }) => {
   const [filteredPriority, setFilteredPriority] = useState("");
 
   useEffect(() => {
-    if (loggedInUser) {
+    if (loggedInUser && loggedInUser.habits !== habits) {
       const updatedUser = {
         ...loggedInUser,
         habits,
@@ -23,7 +24,7 @@ const HabitsPage = ({ loggedInUser, setLoggedInUser, setUserList }) => {
         )
       );
     }
-  }, [habits, loggedInUser, setLoggedInUser, setUserList]);
+  }, [habits, loggedInUser, setUserList]);
 
   const prioChange = (prio) => {
     setSelectedPriority(prio);
@@ -117,31 +118,33 @@ const HabitsPage = ({ loggedInUser, setLoggedInUser, setUserList }) => {
         </button>
       </div>
 
-      <h2 className="header">Dina Vanor</h2>
-      <div className="filter-drop-container">
-        <h3>Filtrera prioritet</h3>
-        <select
-          className="filter-drop  "
-          onChange={(e) => {
-            setFilteredPriority(e.target.value);
-          }}
-        >
-          <option value={""}>Alla</option>
-          <option value={"low"}>Låg</option>
-          <option value={"mid"}>Medel</option>
-          <option value={"high"}>Hög</option>
-        </select>
-      </div>
+      <div className="filter-sort-container">
+        <div className="filter-container">
+          <h3 className="habits-header">Filtrera prioritet</h3>
+          <select
+            className="filter-drop"
+            onChange={(e) => {
+              setFilteredPriority(e.target.value);
+            }}
+          >
+            <option value={""}>Alla</option>
+            <option value={"low"}>Låg</option>
+            <option value={"mid"}>Mellan</option>
+            <option value={"high"}>Hög</option>
+          </select>
+        </div>
 
-      <div className="sort-container">
-        <h3>Sortera repetitioner</h3>
-        <button className="sort-btn" onClick={() => sortHabits("asc")}>
-          Låg till Hög
-        </button>
-        <button className="sort-btn" onClick={() => sortHabits("desc")}>
-          Hög till Låg
-        </button>
+        <div className="sort-container">
+          <h3 className="habits-header">Sortera repetitioner</h3>
+          <button className="sort-btn" onClick={() => sortHabits("asc")}>
+            Låg till Hög
+          </button>
+          <button className="sort-btn" onClick={() => sortHabits("desc")}>
+            Hög till Låg
+          </button>
+        </div>
       </div>
+      <h3 className="habits-header">Dina Vanor</h3>
       <div className="habit-card-container">
         {filteredHabits.map((habit, i) => {
           return (

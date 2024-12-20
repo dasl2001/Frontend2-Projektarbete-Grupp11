@@ -5,8 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  /* background-color: rgba(239, 243, 244, 0.973); */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -66,4 +65,3 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
-
